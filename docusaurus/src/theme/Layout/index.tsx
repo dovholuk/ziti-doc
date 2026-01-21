@@ -1,5 +1,5 @@
 import React, {type ReactNode} from 'react';
-import { NetFoundryLayout, NetFoundryLayoutProps } from '@openclint/docusaurus-shared/ui';
+import { NetFoundryLayout, NetFoundryLayoutProps } from '@netfoundry/docusaurus-shared/ui';
 import {openZitiFooter} from "@openziti/src/components/footer";
 import ozstyles from '../../styles/openziti.layout.module.css'
 
