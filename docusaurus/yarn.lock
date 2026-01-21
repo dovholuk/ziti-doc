@@ -2196,6 +2196,14 @@
     hls.js "~1.6.6"
     mux-embed "^5.8.3"
 
+"@netfoundry/docusaurus-shared@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@netfoundry/docusaurus-shared/-/docusaurus-shared-0.1.1.tgz#0efcf8db940c05fa476e48dce1d2631bc95d23c7"
+  integrity sha512-/bccmd8ZSCX47ebbtcMLyq73BLkLQO2p7qa11oX793PP9kAtVHZA1aAfo0bfQDX/sMQxQ0mrT1sGvDT7t57myg==
+  dependencies:
+    react-device-detect "^2.2.3"
+    react-github-btn "^1.4.0"
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz"
@@ -2216,14 +2224,6 @@
   dependencies:
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
-
-"@openclint/docusaurus-shared@^0.0.168":
-  version "0.0.168"
-  resolved "https://registry.yarnpkg.com/@openclint/docusaurus-shared/-/docusaurus-shared-0.0.168.tgz#f6a0dd58535393f9961f311e7ba24704945aee43"
-  integrity sha512-uITA4Xf3ItQ8TKZR/N8IkWZDJaXoJQ7PntPIB8vjlH4qBkIIRVn3Gnc5eRt/hgRnUnK2Jxy5Gr0znS0M58NYyA==
-  dependencies:
-    react-device-detect "^2.2.3"
-    react-github-btn "^1.4.0"
 
 "@pnpm/config.env-replace@^1.1.0":
   version "1.1.0"
@@ -3646,9 +3646,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001702, caniuse-lite@^1.0.30001718:
-  version "1.0.30001723"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001723.tgz"
-  integrity sha512-1R/elMjtehrFejxwmexeXAtae5UO9iSyFn6G/I806CYC/BLyyBk1EPhrKBkWhy6wM6Xnm47dSJQec+tLJ39WHw==
+  version "1.0.30001765"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001765.tgz"
+  integrity sha512-LWcNtSyZrakjECqmpP4qdg0MMGdN368D7X8XvvAqOcqMv0RxnlqVKZl2V6/mBR68oYMxOZPLw/gO7DuisMHUvQ==
 
 castable-video@~1.1.10:
   version "1.1.10"
