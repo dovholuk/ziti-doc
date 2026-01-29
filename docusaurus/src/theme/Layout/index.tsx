@@ -1,12 +1,16 @@
-import React, {type ReactNode} from 'react';
-import { NetFoundryLayout, NetFoundryLayoutProps } from '@netfoundry/docusaurus-shared/ui';
-import {openZitiFooter} from "@openziti/src/components/footer";
-import ozstyles from '../../styles/openziti.layout.module.css'
+import React, { type ReactNode } from 'react';
+import { NetFoundryLayout } from '@netfoundry/docusaurus-theme/ui';
+import { openZitiFooter } from '../../components/footer';
 
-export default function LayoutWrapper(props: NetFoundryLayoutProps): ReactNode {
+const starProps = {
+    repoUrl: 'https://github.com/openziti/ziti',
+    label: 'Star OpenZiti on GitHub',
+};
+
+export default function Layout({ children }: { children: ReactNode }): ReactNode {
     return (
-        <NetFoundryLayout starProps={{repoUrl:"https://github.com/openziti/ziti", label:"Star Us on GitHub"}} footerProps={openZitiFooter}>
-            {props.children}
+        <NetFoundryLayout footerProps={openZitiFooter} starProps={starProps}>
+            {children}
         </NetFoundryLayout>
     );
 }

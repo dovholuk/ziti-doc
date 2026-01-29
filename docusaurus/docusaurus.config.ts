@@ -5,8 +5,9 @@ import {Config} from "@docusaurus/types";
 import type {ThemeConfig} from '@docusaurus/preset-classic';
 import pluginHotjar from './src/plugins/hotjar';
 import type {Options as ClientRedirectsOptions} from '@docusaurus/plugin-client-redirects';
-import {docUrl, hotjarId} from "@netfoundry/docusaurus-shared/node";
+import {docUrl, hotjarId} from "@netfoundry/docusaurus-theme/node";
 import path from "node:path";
+import {openZitiFooter} from "./src/components/footer";
 import {
     LogLevel,
     remarkCodeSections,
@@ -15,7 +16,7 @@ import {
     remarkYamlTable,
     remarkYouTube,
     timedPlugin
-} from "@netfoundry/docusaurus-shared/plugins";
+} from "@netfoundry/docusaurus-theme/plugins";
 
 const baseUrl = '/';
 const openziti = 'openziti';
@@ -75,7 +76,7 @@ const config: Config = {
             customCss: require.resolve('./src/css/custom.css'),
         }],
         '@docusaurus/theme-mermaid',
-        '@docusaurus/theme-search-algolia',
+        '@netfoundry/docusaurus-theme',
     ],
     customFields: {
         DOCUSAURUS_BASE_PATH: '/docs',
@@ -205,34 +206,20 @@ const config: Config = {
     ],
     themeConfig:
         {
+            // NetFoundry theme configuration
+            netfoundry: {
+                showStarBanner: true,
+                starBanner: {
+                    repoUrl: 'https://github.com/openziti/ziti',
+                    label: 'Star OpenZiti on GitHub',
+                },
+                footer: openZitiFooter,
+            },
             hotjar: {applicationId: hotjarId},
             metadata: [
                 {name: 'description', content: 'open source zero trust'},
                 {name: 'robots', content: 'index, follow'},
             ],
-            algolia: {
-                // The application ID provided by Algolia
-                appId: 'EXWPKK5PV4',
-
-                // Public API key: it is safe to commit it
-                apiKey: '47858a78ccf0246d9b9cf4efaf6a1b8b',
-
-                indexName: 'openziti',
-
-                // Optional: see doc section below
-                contextualSearch: true,
-
-                // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites, and we want to navigate with window.location.href to them.
-                // externalUrlRegex: 'external\\.example\\.com|thirdparty\\.example\\.com',
-
-                // Optional: Algolia search parameters
-                searchParameters: {},
-
-                // Optional: path for search page that enabled by default (`false` to disable it)
-                searchPagePath: 'search',
-
-                //... other Algolia params
-            },
             docs: {
                 sidebar: {
                     hideable: true,
@@ -323,24 +310,6 @@ const config: Config = {
                         title: 'GitHub'
                     },
                 ],
-            },
-            footer: {
-                style: 'light',
-                links: [
-                    {
-                        label: 'Policies',
-                        to: '/policies/CODE_OF_CONDUCT',
-                    },
-                    {
-                        label: 'NetFoundry Cloud',
-                        to: 'https://netfoundry.io/products/netfoundry-platform/netfoundry-cloud-for-openziti/'
-                    },
-                    {
-                        label: 'Blog',
-                        to: 'https://blog.openziti.io'
-                    },
-                ],
-                copyright: `Copyright © ${new Date().getFullYear()} NetFoundry Inc.`,
             },
             prism: {
                 theme: prismThemes.github,
