@@ -61,7 +61,35 @@ OpenZiti leverages established trust via an ephemeral key exchange to bootstrap 
 4. **Key derivation**: Both parties derive symmetric session keys from their own private keys and the received public
    key.
 
-![OpenZiti key exchange E2Ee](../../../../static/img/e2e-key-exchange.png)
+```mermaid
+sequenceDiagram
+    participant Alice
+    participant Bob
+    participant EdgeRouter
+    participant Controller
+
+    rect rgb(240, 240, 240)
+        note over Bob: [Bob binds the service]
+        note over Bob: Bob generates ephemeral key pair:<br/>P(Bob)/S(Bob)
+        Bob->>EdgeRouter: 1 Bind(service,P(bob))
+        EdgeRouter->>Controller: 2 Bind(Bob.service, P(Bob))
+        note over Controller: Bob is registered to host service
+    end
+
+    rect rgb(240, 240, 240)
+        note over Alice: [Alice connects to service hosted by Bob]
+        note over Alice: Alice generates ephemeral key pair:<br/>P(Alice)/S(Alice)
+        Alice->>Controller: 3 GetSession(service)
+        Controller->>Alice: 4 Session(tok,EdgeRouter)
+        Alice->>EdgeRouter: 5 Dial(tok,P(Alice))
+        EdgeRouter->>Controller: 6 CreateSession(service, P(Alice))
+        note over Controller: magic of routing
+        Controller->>EdgeRouter: 7 Session(Route,P(bob))
+        EdgeRouter->>Alice: 8 DialSuccess(P(bob))
+        Controller-->>EdgeRouter: 9 Egress(service,P(Alice))
+        EdgeRouter->>Bob: 10 Dial(P(Alice))
+    end
+```
 
 ### Message exchange and forward secrecy
 
@@ -73,7 +101,26 @@ For every message sent, OpenZiti performs the following:
   provides [perfect forward secrecy](https://grokipedia.com/page/Forward_secrecy), ensuring that if a future key is
   somehow compromised, past sessions remain secure.
 
-![OpenZiti message exchange E2Ee](../../../../static/img/e2e-message-exchange.png)
+```mermaid
+sequenceDiagram
+    participant Alice
+    participant Bob
+
+    rect rgb(240, 240, 240)
+        note over Alice,Bob: [Connection Between Bob and Alice is Established]
+        note over Alice: Alice computes initial session keys<br/>P(Bob)/S(Alice) => RX(Alice),TX(Alice)
+        note over Bob: Bob computes initial session keys<br/>P(Alice)/S(Bob) => RX(Bob),TX(Bob)
+
+        Alice-->>Bob: 11 secret session header
+        Bob-->>Alice: 12 secret session header
+
+        Alice->>Bob: 13 msg=encrypt(Heyy Bob!, TX(Alice))
+        note over Bob: Bob: decrypt(msg, RX(Bob))
+
+        Bob->>Alice: 14 msg=encrypt(How're you doin'?, TX(Bob))
+        note over Alice: decrypt(msg, RX(Alice))
+    end
+```
 
 ## Performance and overhead
 
