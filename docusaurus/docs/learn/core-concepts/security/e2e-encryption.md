@@ -1,8 +1,4 @@
----
-sidebar_label: Edge-to-edge encryption
----
-
-# Edge-to-edge encryption in OpenZiti
+# Edge-to-edge encryption
 
 Edge-to-edge encryption (commonly referred to as end-to-end encryption or E2Ee) ensures that data is encrypted at the
 source and only decrypted by the intended recipient. This ensures that data remains secure even if the underlying
@@ -81,9 +77,3 @@ Encryption introduces a negligible amount of overhead to ensure security:
 
 - **Session start**: One additional 24-byte message is sent at the beginning of a session.
 - **Per message**: 17 bytes are added to each message.
-
-### Optional configuration
-
-Edge-to-edge encryption is enabled by default for all SDK-to-SDK communications. However, it can be made optional via
-service configuration. This is useful for services that already use high-end encryption (like proxied HTTPS), allowing
-you to avoid "double-encrypting" data where performance is the absolute priority.
