@@ -49,7 +49,7 @@ OpenZiti to safely use randomly generated nonces for every message without the r
 resilient in distributed, stateless environments where central counter management is impractical.
 :::
 
-## How the OpenZiti key exchange works
+## OpenZiti key exchange
 
 OpenZiti leverages established trust via an ephemeral key exchange to bootstrap a secure session without adding latency.
 
@@ -61,6 +61,8 @@ OpenZiti leverages established trust via an ephemeral key exchange to bootstrap 
 4. **Key derivation**: Both parties derive symmetric session keys from their own private keys and the received public
    key.
 
+![OpenZiti key exchange E2Ee](../../../../static/img/e2e-key-exchange.png)
+
 ### Message exchange and forward secrecy
 
 For every message sent, OpenZiti performs the following:
@@ -70,6 +72,8 @@ For every message sent, OpenZiti performs the following:
 - **Key rotation**: The transmission (tx) and reception (rx) keys are rotated immediately after every message. This
   provides [perfect forward secrecy](https://grokipedia.com/page/Forward_secrecy), ensuring that if a future key is
   somehow compromised, past sessions remain secure.
+
+![OpenZiti message exchange E2Ee](../../../../static/img/e2e-message-exchange.png)
 
 ## Performance and overhead
 
