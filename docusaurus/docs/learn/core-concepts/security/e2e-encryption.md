@@ -49,7 +49,7 @@ OpenZiti to safely use randomly generated nonces for every message without the r
 resilient in distributed, stateless environments where central counter management is impractical.
 :::
 
-## OpenZiti key exchange
+## Key exchange
 
 OpenZiti leverages established trust via an ephemeral key exchange to bootstrap a secure session without adding latency.
 
