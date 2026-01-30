@@ -1,3 +1,7 @@
+---
+sidebar_label: Edge-to-edge encryption
+---
+
 # Edge-to-edge encryption in OpenZiti
 
 Edge-to-edge encryption (commonly referred to as end-to-end encryption or E2Ee) ensures that data is encrypted at the
