@@ -1,4 +1,4 @@
-# Understanding edge-to-edge encryption in Ziti
+# Edge-to-edge encryption in Ziti
 
 Edge-to-edge encryption (commonly referred to as end-to-end encryption or E2Ee) ensures that data is encrypted at the
 source and only decrypted by the intended recipient. This ensures that data remains secure even if the underlying
